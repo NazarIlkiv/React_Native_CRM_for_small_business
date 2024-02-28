@@ -10,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
     // onAuthStateChanger => function FireBase
 
     setTimeout(() => {
-      setIsAuthenticated(false);
+      setIsAuthenticated(true);
     }, 3000);
   }, []);
 

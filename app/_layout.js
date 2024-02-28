@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import { Slot, useSegments, useRouter } from "expo-router";
+import { Slot, useSegments, useRouter, Stack } from "expo-router";
 import React, { useEffect, useContext } from "react";
 import "../global.css";
 import { AuthContextProvider, useAuth } from "../context/authContext";
@@ -12,9 +12,9 @@ const MainLayout = () => {
   useEffect(() => {
     // Check if user is authenticated
     if (typeof isAuthenticated == "undefined") return;
-    const inApp = segments[0] === "app"; // має повертати false
+    const inApp = segments[0] === "app/tabs"; // має повертати false
     if (isAuthenticated && !inApp) {
-      router.replace("home");
+      router.replace("/home");
     } else if (isAuthenticated == false) {
       router.replace("signIn");
     }

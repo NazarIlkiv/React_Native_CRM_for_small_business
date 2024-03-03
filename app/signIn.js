@@ -4,6 +4,7 @@ import {
   TextInput,
   TouchableOpacity,
   Pressable,
+  Alert,
 } from "react-native";
 import React, { useRef, useState } from "react";
 import {
@@ -26,6 +27,11 @@ const SignIn = () => {
   const passwordRef = useRef("");
 
   const handleLogin = async () => {
+    if (!emailRef.current || !passwordRef.current) {
+      Alert.alert("Sign in", "Please fill all fields");
+      return; // зупиняється виконання функції якщо є порожні поля
+    }
+
     // login process
   };
 

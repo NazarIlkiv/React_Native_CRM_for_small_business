@@ -29,7 +29,33 @@ const SignUp = () => {
   const usernameRef = useRef("");
   const profileRef = useRef("");
 
-  const handleRegister = async () => {};
+  const handleRegister = async () => {
+    if (
+      !emailRef.current ||
+      !passwordRef.current ||
+      !usernameRef.current ||
+      !profileRef.current
+    ) {
+      Alert.alert("Sign up", "Please fill all the fields");
+      return;
+    }
+
+    setLoading(true);
+
+    let response = await register(
+      emailRef.current,
+      passwordRef.current,
+      usernameRef.current,
+      profileRef.current
+    );
+
+    setLoading(false);
+
+    console.log("got result: ", response);
+    if (!response.success) {
+      Alert.alert("Sign up", response.msg);
+    }
+  };
 
   return (
     <CustomKeyboardAvoidView>

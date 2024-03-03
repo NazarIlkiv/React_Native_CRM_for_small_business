@@ -43,14 +43,6 @@ export default function _layout() {
                     tintColor: focused ? "#A0A0A0" : "black",
                   }}
                 />
-                <Text
-                  style={{
-                    fontSize: 12,
-                    color: focused ? "#A0A0A0" : "black",
-                  }}
-                >
-                  Home
-                </Text>
               </View>
             );
           },
@@ -79,14 +71,6 @@ export default function _layout() {
                     tintColor: focused ? "#A0A0A0" : "black",
                   }}
                 />
-                <Text
-                  style={{
-                    fontSize: 12,
-                    color: focused ? "#A0A0A0" : "black",
-                  }}
-                >
-                  Tasks
-                </Text>
               </View>
             );
           },
@@ -115,14 +99,6 @@ export default function _layout() {
                     tintColor: focused ? "#A0A0A0" : "black",
                   }}
                 />
-                <Text
-                  style={{
-                    fontSize: 12,
-                    color: focused ? "#A0A0A0" : "black",
-                  }}
-                >
-                  Chat
-                </Text>
               </View>
             );
           },
@@ -151,14 +127,6 @@ export default function _layout() {
                     tintColor: focused ? "#A0A0A0" : "black",
                   }}
                 />
-                <Text
-                  style={{
-                    fontSize: 12,
-                    color: focused ? "#A0A0A0" : "black",
-                  }}
-                >
-                  Settings
-                </Text>
               </View>
             );
           },

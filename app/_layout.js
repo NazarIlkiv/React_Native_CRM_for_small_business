@@ -1,6 +1,5 @@
-import { View, Text } from "react-native";
-import { Slot, useSegments, useRouter, Stack } from "expo-router";
-import React, { useEffect, useContext } from "react";
+import { Slot, useSegments, useRouter } from "expo-router";
+import React, { useEffect } from "react";
 import "../global.css";
 import { AuthContextProvider, useAuth } from "../context/authContext";
 

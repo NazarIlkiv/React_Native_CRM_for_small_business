@@ -31,6 +31,12 @@ const SignIn = () => {
       Alert.alert("Sign in", "Please fill all fields");
       return; // зупиняється виконання функції якщо є порожні поля
     }
+    setLoading(true);
+    const response = await login(emailRef.current, passwordRef.current);
+    setLoading(false);
+    if (!response.success) {
+      Alert.alert("Sign in", response.msg);
+    }
 
     // login process
   };

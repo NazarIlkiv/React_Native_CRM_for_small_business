@@ -15,14 +15,11 @@ export const AuthContextProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(undefined);
 
   useEffect(() => {
-    {
-      /* onAuthStateChanged - це спостерігач,
-       чи користувач увійшов у систему, інакше кажучи, що хтось залогінився */
-    }
     const unsub = onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsAuthenticated(true);
         setUser(user);
+        updateUserData(user.uid);
       } else {
         setIsAuthenticated(false);
         setUser(null);
@@ -30,6 +27,20 @@ export const AuthContextProvider = ({ children }) => {
     });
     return unsub;
   }, []);
+
+  updateUserData = async (userId) => {
+    const docRef = doc(db, "users", userId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      let data = docSnap.data();
+      setUser({
+        ...user,
+        username: data.username,
+        profileUrl: data.profileUrl,
+        userId: data.userId,
+      });
+    }
+  };
 
   const login = async (email, password) => {
     try {

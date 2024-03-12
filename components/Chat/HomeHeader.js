@@ -8,7 +8,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import { blurhash } from "@/utils/common";
 import { useAuth } from "@/context/authContext";
-import { AntDesign, Feather } from "@expo/vector-icons";
 
 const ios = Platform.OS == "ios";
 const HomeHeader = () => {
@@ -20,9 +19,6 @@ const HomeHeader = () => {
   };
 
   const { top } = useSafeAreaInsets();
-
-  console.log(user);
-  console.log(user?.profileUrl);
 
   return (
     <View

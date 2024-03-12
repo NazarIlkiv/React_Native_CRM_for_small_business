@@ -1,10 +1,7 @@
 import { View, Text, Pressable } from "react-native";
 import { Image } from "expo-image";
 import React from "react";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { useEffect, useState } from "react";
 import {
   doc,
@@ -13,7 +10,7 @@ import {
   orderBy,
   onSnapshot,
 } from "firebase/firestore";
-import { formatDate, getRoomId } from "@/utils/common";
+import { formatDate, formatTime, getRoomId } from "@/utils/common";
 import { db } from "@/firebaseConfig";
 
 const ChatItem = ({ item, noBorder, router, currentUser }) => {
@@ -39,7 +36,9 @@ const ChatItem = ({ item, noBorder, router, currentUser }) => {
   const renderTime = () => {
     if (lastMessage) {
       let date = lastMessage?.createdAt;
-      return formatDate(new Date(date?.seconds * 1000));
+      let formattedDate = formatDate(new Date(date?.seconds * 1000));
+      let formattedTime = formatTime(new Date(date?.seconds * 1000));
+      return `${formattedDate} ${formattedTime}`;
     }
   };
 

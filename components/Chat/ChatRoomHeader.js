@@ -3,10 +3,7 @@ import React from "react";
 import { Stack } from "expo-router";
 import { Image } from "expo-image";
 import { Entypo, Ionicons } from "@expo/vector-icons";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 const ChatRoomHeader = ({ user, router }) => {
   return (

@@ -1,4 +1,4 @@
-import { View, Text, Button, Pressable } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import React from "react";
 import { useAuth } from "../../../context/authContext";
 

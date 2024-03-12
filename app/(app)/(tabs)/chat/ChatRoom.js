@@ -1,26 +1,15 @@
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  Alert,
-  Keyboard,
-} from "react-native";
-import React, { useEffect, useRef } from "react";
+import { View, TextInput, Pressable, Alert, Keyboard } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import ChatRoomHeader from "@/components/Chat/ChatRoomHeader";
 import { useRouter } from "expo-router";
-import { useState } from "react";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
-import { Feather } from "@expo/vector-icons";
-import CustomKeyboardAvoidView from "@/components/custom/CustomKeyboardAvoidView";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { Feather, Ionicons } from "@expo/vector-icons";
 import MessageList from "@/components/Chat/Message/MessageList";
 import { useAuth } from "@/context/authContext";
 import { getRoomId } from "@/utils/common";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import {
   Timestamp,
   doc,
@@ -31,7 +20,8 @@ import {
   orderBy,
   onSnapshot,
 } from "firebase/firestore";
-import { db } from "@/firebaseConfig.js";
+import { db, storage } from "@/firebaseConfig.js";
+import * as ImagePicker from "expo-image-picker";
 
 const ChatRoom = () => {
   const item = useLocalSearchParams(); // second user
@@ -104,6 +94,54 @@ const ChatRoom = () => {
     }
   };
 
+  const handleSendFile = () => {
+    console.log("add file");
+  };
+
+  const handleImagePicker = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      uploadImage(result.uri);
+    }
+  };
+
+  const uploadImage = async (uri) => {
+    try {
+      const imageRef = ref(storage, `images/${Math.random().toString(36)}`);
+      const response = await fetch(uri);
+      const blob = await response.blob();
+      await uploadBytes(imageRef, blob);
+      const downloadURL = await getDownloadURL(imageRef);
+      saveImageURLToFirebaseDatabase(downloadURL);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+
+  const saveImageURLToFirebaseDatabase = async (imageURL) => {
+    try {
+      let roomId = getRoomId(user?.userId, item?.userId);
+      const docRef = doc(db, "rooms", roomId);
+      const messagesRef = collection(docRef, "messages");
+
+      const newDoc = await addDoc(messagesRef, {
+        userId: user?.userId,
+        imageURL: imageURL,
+        profileUrl: user?.profileUrl,
+        senderName: user?.username,
+        createdAt: Timestamp.fromDate(new Date()),
+      });
+    } catch (error) {
+      console.error("Error saving image URL to Firebase Database:", error);
+    }
+  };
+
   useEffect(() => {
     updateScrollView();
   }, [messages]);
@@ -136,12 +174,26 @@ const ChatRoom = () => {
               style={{ fontSize: hp(2) }}
               className="flex-1 mr-2 "
             />
-            <Pressable
-              onPress={handleSendMessage}
-              className="bg-neutral-200 p-2 mr-[1px] rounded-full"
-            >
-              <Feather name="send" size={hp(2.7)} color="#737373" />
-            </Pressable>
+            <View className="flex-row mr-[1px] ">
+              <Pressable
+                onPress={handleSendFile}
+                className="bg-neutral-200 p-2 mr-2  rounded-full "
+              >
+                <Ionicons name="attach" size={hp(2.7)} color="#737373" />
+              </Pressable>
+              <Pressable
+                onPress={handleImagePicker}
+                className="bg-neutral-200 p-2 mr-2  rounded-full "
+              >
+                <Feather name="image" size={hp(2.7)} color="#737373" />
+              </Pressable>
+              <Pressable
+                onPress={handleSendMessage}
+                className="bg-neutral-200 p-2 mr-[1px] rounded-full"
+              >
+                <Feather name="send" size={hp(2.7)} color="#737373" />
+              </Pressable>
+            </View>
           </View>
         </View>
       </View>

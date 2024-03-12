@@ -1,16 +1,12 @@
 import { View } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "@/context/authContext";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { StatusBar } from "expo-status-bar";
 import ChatList from "@/components/Chat/ChatList";
 import Loading from "@/components/custom/Loading";
 import { query, where, getDocs } from "firebase/firestore";
 import { usersRef } from "@/firebaseConfig";
-import HomeHeader from "../../../../components/Chat/HomeHeader";
 
 const Home = () => {
   const { logout, user } = useAuth();

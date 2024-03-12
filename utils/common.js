@@ -8,23 +8,15 @@ export const getRoomId = (userId1, userId2) => {
 };
 
 export const formatDate = (date) => {
-  let day = date.getDate();
-  let monthName = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  let month = monthName[date.getMonth()];
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+  });
+};
 
-  let formattedDate = day + " " + month;
-  return formattedDate;
+export const formatTime = (date) => {
+  return date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 };

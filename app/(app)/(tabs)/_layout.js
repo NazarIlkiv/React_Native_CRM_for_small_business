@@ -30,7 +30,7 @@ export default function _layout() {
                 style={{
                   alignItems: "center",
                   paddingTop: 16,
-                  borderTopColor: focused ? "#A0A0A0" : "#FAFAFC",
+                  borderTopColor: focused ? "rgb(129 140 248)" : "#FAFAFC",
                   borderTopWidth: 2,
                 }}
               >
@@ -40,7 +40,7 @@ export default function _layout() {
                   style={{
                     height: 24,
                     width: 24,
-                    tintColor: focused ? "#A0A0A0" : "black",
+                    tintColor: focused ? "rgb(129 140 248)" : "black",
                   }}
                 />
               </View>
@@ -58,7 +58,7 @@ export default function _layout() {
                 style={{
                   alignItems: "center",
                   paddingTop: 16,
-                  borderTopColor: focused ? "#A0A0A0" : "#FAFAFC",
+                  borderTopColor: focused ? "rgb(129 140 248)" : "#FAFAFC",
                   borderTopWidth: 2,
                 }}
               >
@@ -68,7 +68,7 @@ export default function _layout() {
                   style={{
                     height: 24,
                     width: 24,
-                    tintColor: focused ? "#A0A0A0" : "black",
+                    tintColor: focused ? "rgb(129 140 248)" : "black",
                   }}
                 />
               </View>
@@ -86,7 +86,7 @@ export default function _layout() {
                 style={{
                   alignItems: "center",
                   paddingTop: 16,
-                  borderTopColor: focused ? "#A0A0A0" : "#FAFAFC",
+                  borderTopColor: focused ? "rgb(129 140 248)" : "#FAFAFC",
                   borderTopWidth: 2,
                 }}
               >
@@ -96,7 +96,7 @@ export default function _layout() {
                   style={{
                     height: 24,
                     width: 24,
-                    tintColor: focused ? "#A0A0A0" : "black",
+                    tintColor: focused ? "rgb(129 140 248)" : "black",
                   }}
                 />
               </View>
@@ -114,7 +114,7 @@ export default function _layout() {
                 style={{
                   alignItems: "center",
                   paddingTop: 16,
-                  borderTopColor: focused ? "#A0A0A0" : "#FAFAFC",
+                  borderTopColor: focused ? "rgb(129 140 248)" : "#FAFAFC",
                   borderTopWidth: 2,
                 }}
               >
@@ -124,7 +124,7 @@ export default function _layout() {
                   style={{
                     height: 24,
                     width: 24,
-                    tintColor: focused ? "#A0A0A0" : "black",
+                    tintColor: focused ? "rgb(129 140 248)" : "black",
                   }}
                 />
               </View>

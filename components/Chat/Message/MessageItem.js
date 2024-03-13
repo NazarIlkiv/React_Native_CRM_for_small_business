@@ -1,11 +1,20 @@
-import { View, Text, Image } from "react-native";
-import React from "react";
+import { View, Text, Image, Button, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import FullScreenImage from "@/components/custom/FullScreenImage";
 
 const MessageItem = ({ message, currentUser }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImageURL, setSelectedImageURL] = useState("");
+
+  const handleImagePress = (imageURL) => {
+    setSelectedImageURL(imageURL);
+    setFullScreenVisible(true);
+  };
+
   if (currentUser?.userId === message?.userId) {
     // My message
     return (
@@ -13,16 +22,26 @@ const MessageItem = ({ message, currentUser }) => {
         <View style={{ width: wp(80) }}>
           {message.imageURL ? (
             <View className="flex self-end p-3 rounded-2xl bg-white border border-neutral-200">
-              <Image
-                source={{ uri: message.imageURL }}
-                style={{ width: wp(40), height: wp(40), borderRadius: wp(3) }}
-              />
+              <TouchableOpacity onPress={() => setModalOpen(true)}>
+                <Image
+                  source={{ uri: message.imageURL }}
+                  style={{ width: wp(40), height: wp(40), borderRadius: wp(3) }}
+                />
+              </TouchableOpacity>
             </View>
           ) : (
             <View className="flex self-end p-3 rounded-2xl bg-white border border-neutral-200">
               <Text style={{ fontSize: hp(1.9) }}>{message?.text}</Text>
             </View>
           )}
+
+          {/* Render full screen image if image is clicked */}
+
+          <FullScreenImage
+            imageURL={message.imageURL}
+            isOpen={modalOpen}
+            onClose={() => setModalOpen(false)}
+          />
         </View>
       </View>
     );

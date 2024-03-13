@@ -101,8 +101,8 @@ const ChatRoom = () => {
   const handleImagePicker = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [1, 1],
+      allowsEditing: false,
+      aspect: [4, 1],
       quality: 1,
     });
 
@@ -175,12 +175,12 @@ const ChatRoom = () => {
               className="flex-1 mr-2 "
             />
             <View className="flex-row mr-[1px] ">
-              <Pressable
+              {/* <Pressable
                 onPress={handleSendFile}
                 className="bg-neutral-200 p-2 mr-2  rounded-full "
               >
                 <Ionicons name="attach" size={hp(2.7)} color="#737373" />
-              </Pressable>
+              </Pressable> */}
               <Pressable
                 onPress={handleImagePicker}
                 className="bg-neutral-200 p-2 mr-2  rounded-full "

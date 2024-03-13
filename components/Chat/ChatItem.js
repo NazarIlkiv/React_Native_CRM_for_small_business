@@ -44,7 +44,14 @@ const ChatItem = ({ item, noBorder, router, currentUser }) => {
 
   const renderLastMessage = () => {
     if (typeof lastMessage == "undefined") return "Loading...";
+
     if (lastMessage) {
+      if (lastMessage?.imageURL) {
+        if (currentUser?.userId == lastMessage?.userId)
+          return "You: " + "Sent an image";
+        return "Image";
+      }
+
       if (currentUser?.userId == lastMessage?.userId)
         return "You: " + lastMessage?.text;
       return lastMessage?.text;

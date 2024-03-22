@@ -21,7 +21,7 @@ import { useAuth } from "../context/authContext";
 const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { login } = useAuth();
+  const { login, i18n } = useAuth();
 
   const emailRef = useRef("");
   const passwordRef = useRef("");
@@ -59,7 +59,7 @@ const SignIn = () => {
             style={{ fontSize: hp(4) }}
             className="font-bold tracking-wider text-center text-neutral-900  "
           >
-            Sign In
+            {i18n.t("SingInText")}
           </Text>
 
           {/* inputs */}
@@ -96,7 +96,7 @@ const SignIn = () => {
                 style={{ fontSize: hp(1.8) }}
                 className="font-semibold text-right text-neutral-500"
               >
-                Forgot password?
+                {i18n.t("ForgotPassword")}
               </Text>
             </View>
 
@@ -122,7 +122,7 @@ const SignIn = () => {
                     style={{ fontSize: hp(2.7) }}
                     className="text-white font-bold tracking-wider"
                   >
-                    Sign In
+                    {i18n.t("SingIn")}
                   </Text>
                 </TouchableOpacity>
               )}
@@ -135,7 +135,7 @@ const SignIn = () => {
                 style={{ fontSize: hp(1.8) }}
                 className="font-semibold text-neutral-500"
               >
-                Don`t have an account?
+                {i18n.t("HaveAccount")}
               </Text>
               <Pressable onPress={() => router.push("signUp")}>
                 <Text
@@ -143,7 +143,7 @@ const SignIn = () => {
                   className="text-indigo-500 font-bold"
                 >
                   {" "}
-                  Sign Up
+                  {i18n.t("SingUp")}
                 </Text>
               </Pressable>
             </View>

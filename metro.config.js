@@ -7,5 +7,5 @@ const config = getDefaultConfig(__dirname, {
   // [Web-only]: Enables CSS support in Metro.
   isCSSEnabled: true,
 });
-
+config.watcher.additionalExts.push("mjs", "cjs");
 module.exports = withNativeWind(config, { input: "./global.css" });

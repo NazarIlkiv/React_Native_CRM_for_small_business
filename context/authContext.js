@@ -7,6 +7,14 @@ import {
   signOut,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import { translations } from "@/localizations/localizations";
+import * as Localization from "expo-localization";
+import { I18n } from "i18n-js";
+
+const i18n = new I18n(translations);
+
+i18n.locale = Localization.locale;
+i18n.enableFallback = true;
 
 export const AuthContext = createContext();
 
@@ -89,9 +97,27 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
+  //Localization
+
+  const [locale, setLocale] = useState(i18n.locale);
+
+  const changeLocale = (locale) => {
+    i18n.locale = locale;
+    setLocale(locale);
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated, login, logout, register }}
+      value={{
+        user,
+        isAuthenticated,
+        login,
+        logout,
+        register,
+        locale,
+        changeLocale,
+        i18n,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -19,7 +19,7 @@ import CustomKeyboardAvoidView from "../components/custom/CustomKeyboardAvoidVie
 import { useAuth } from "../context/authContext";
 
 const SignUp = () => {
-  const { register } = useAuth();
+  const { register, i18n } = useAuth();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -74,7 +74,7 @@ const SignUp = () => {
             style={{ fontSize: hp(4) }}
             className="font-bold tracking-wider text-center text-neutral-900  "
           >
-            Sign Up
+            {i18n.t("SingUp")}
           </Text>
 
           {/* inputs */}
@@ -158,7 +158,7 @@ const SignUp = () => {
                     style={{ fontSize: hp(2.7) }}
                     className="text-white font-bold tracking-wider"
                   >
-                    Sign Up
+                    {i18n.t("SingUp")}
                   </Text>
                 </TouchableOpacity>
               )}
@@ -171,7 +171,7 @@ const SignUp = () => {
                 style={{ fontSize: hp(1.8) }}
                 className="font-semibold text-neutral-500"
               >
-                Already have an account?
+                {i18n.t("AlreadyHaveAccount")}
               </Text>
               <Pressable onPress={() => router.push("signIn")}>
                 <Text
@@ -179,7 +179,7 @@ const SignUp = () => {
                   className="text-indigo-500 font-bold"
                 >
                   {" "}
-                  Sign In
+                  {i18n.t("SingIn")}
                 </Text>
               </Pressable>
             </View>

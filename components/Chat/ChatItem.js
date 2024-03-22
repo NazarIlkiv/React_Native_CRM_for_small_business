@@ -12,9 +12,11 @@ import {
 } from "firebase/firestore";
 import { formatDate, formatTime, getRoomId } from "@/utils/common";
 import { db } from "@/firebaseConfig";
+import { useAuth } from "../../context/authContext";
 
 const ChatItem = ({ item, noBorder, router, currentUser }) => {
   const [lastMessage, setLastMessage] = useState(undefined);
+  const { i18n } = useAuth();
 
   useEffect(() => {
     let roomId = getRoomId(currentUser.userId, item?.userId);
@@ -56,7 +58,7 @@ const ChatItem = ({ item, noBorder, router, currentUser }) => {
         return "You: " + lastMessage?.text;
       return lastMessage?.text;
     } else {
-      return "Say Hi 👋";
+      return `${i18n.t("FirstMessage")}`;
     }
   };
 

@@ -7,20 +7,11 @@ import {
 import React, { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import { SimpleLineIcons } from "@expo/vector-icons";
-// import { translations } from "@/localizations/localizations";
-// import * as Localization from "expo-localization";
-// import { I18n } from "i18n-js";
 
 //Localization
 
-// const i18n = new I18n(translations);
-
-// i18n.locale = Localization.locale;
-// i18n.enableFallback = true;
-
 const SettingsMenu = () => {
-  const { logout } = useAuth();
-  // const [locale, setLocale] = useState(i18n.locale);
+  const { logout, locale, changeLocale, i18n } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -31,20 +22,23 @@ const SettingsMenu = () => {
       <View className="flex-row justify-between mx-4 items-center gap-3 mb-4 pb-2 border-b border-b-neutral-200 ">
         <View>
           <Text style={{ fontSize: hp(2) }} className="font-semibold">
-            Language
+            {i18n.t("Language")}
           </Text>
         </View>
         <View style={{ width: wp(40) }}>
-          <Picker>
+          <Picker
+            selectedValue={locale}
+            onValueChange={(itemValue, itemIndex) => changeLocale(itemValue)}
+          >
             <Picker.Item label="English" value="en" />
-            <Picker.Item label="Ukrainian" value="ua" />
+            <Picker.Item label="Українська" value="ua" />
           </Picker>
         </View>
       </View>
       <View className="flex-row justify-between mx-4 items-center gap-3 mb-4 pb-2 border-b border-b-neutral-200">
         <View>
           <Text className="font-semibold" style={{ fontSize: hp(2) }}>
-            Dark Mode
+            {i18n.t("DarkMode")}
           </Text>
         </View>
         <View style={{ width: wp(40) }}>
@@ -74,7 +68,7 @@ const SettingsMenu = () => {
               style={{ fontSize: hp(2.5), color: "white" }}
               className="text-white font-bold tracking-wider"
             >
-              Logout
+              {i18n.t("Logout")}
             </Text>
           </TouchableOpacity>
         </View>

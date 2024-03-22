@@ -11,7 +11,7 @@ import { useAuth } from "@/context/authContext";
 
 const ios = Platform.OS == "ios";
 const HomeHeader = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, i18n } = useAuth();
 
   const handleProfile = () => {};
   const handleLogout = async () => {
@@ -35,7 +35,7 @@ const HomeHeader = () => {
     >
       <View>
         <Text style={{ fontSize: hp(3) }} className="font-bold text-white">
-          Chats
+          {i18n.t("Chats")}
         </Text>
       </View>
 

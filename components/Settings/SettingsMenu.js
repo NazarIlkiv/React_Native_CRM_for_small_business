@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import React, { useState } from "react";
+import React from "react";
 import { useAuth } from "../../context/authContext";
 import { SimpleLineIcons } from "@expo/vector-icons";
 

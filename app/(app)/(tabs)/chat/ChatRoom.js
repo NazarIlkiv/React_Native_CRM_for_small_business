@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import ChatRoomHeader from "@/components/Chat/ChatRoomHeader";
 import { useRouter } from "expo-router";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { Feather, Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import MessageList from "@/components/Chat/Message/MessageList";
 import { useAuth } from "@/context/authContext";
 import { getRoomId } from "@/utils/common";
@@ -92,10 +92,6 @@ const ChatRoom = () => {
     } catch (e) {
       Alert.alert("Message", e.message);
     }
-  };
-
-  const handleSendFile = () => {
-    console.log("add file");
   };
 
   const handleImagePicker = async () => {

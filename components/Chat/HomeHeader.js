@@ -1,9 +1,6 @@
 import { View, Text, Platform } from "react-native";
 import React from "react";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import { blurhash } from "@/utils/common";
@@ -11,12 +8,7 @@ import { useAuth } from "@/context/authContext";
 
 const ios = Platform.OS == "ios";
 const HomeHeader = () => {
-  const { user, logout, i18n } = useAuth();
-
-  const handleProfile = () => {};
-  const handleLogout = async () => {
-    await logout();
-  };
+  const { user, i18n } = useAuth();
 
   const { top } = useSafeAreaInsets();
 

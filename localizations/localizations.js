@@ -12,6 +12,7 @@ export const translations = {
     ForgotPassword: "Forgot password?",
     HaveAccount: "Don`t have an account?",
     AlreadyHaveAccount: "Already have an account?",
+    Tasks: "Tasks",
   },
   ua: {
     SingIn: "Увійти",
@@ -26,5 +27,6 @@ export const translations = {
     ForgotPassword: "Забули пароль?",
     HaveAccount: "Не маєте акаунту?",
     AlreadyHaveAccount: "Вже маєте акаунт?",
+    Tasks: "Завдання",
   },
 };

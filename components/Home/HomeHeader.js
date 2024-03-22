@@ -14,10 +14,10 @@ const HomeHeader = () => {
 
   return (
     <View
-      className="flex-row justify-between px-5 bg-indigo-400 pb-6 rounded-b-3xl shadow"
+      className="flex-row justify-between px-5 pb-6 rounded-b-3xl shadow"
       style={{
         paddingTop: ios ? top : top + 10,
-        backgroundColor: "rgb(129 140 248)",
+        backgroundColor: "#24A19C",
         flexDirection: "row",
         justifyContent: "space-between",
         paddingLeft: 20,
@@ -27,7 +27,7 @@ const HomeHeader = () => {
     >
       <View>
         <Text style={{ fontSize: hp(3) }} className="font-bold text-white">
-          {i18n.t("Chats")}
+          {i18n.t("Tasks")}
         </Text>
       </View>
 

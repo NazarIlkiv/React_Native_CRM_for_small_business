@@ -8,8 +8,6 @@ import React from "react";
 import { useAuth } from "../../context/authContext";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
-//Localization
-
 const SettingsMenu = () => {
   const { logout, locale, changeLocale, i18n } = useAuth();
 
@@ -51,7 +49,7 @@ const SettingsMenu = () => {
             marginTop: 20,
             padding: 18,
             paddingHorizontal: 50,
-            backgroundColor: "rgb(129 140 248)",
+            backgroundColor: "#24A19C",
             borderRadius: 20,
           }}
         >

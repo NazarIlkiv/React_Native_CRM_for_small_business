@@ -1,17 +1,22 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import React from "react";
-import { useAuth } from "../../../context/authContext";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+import { AntDesign, Feather } from "@expo/vector-icons";
+import HomeHeader from "@/components/Home/HomeHeader";
+import TasksList from "@/components/Home/TasksList";
 
 const Home = () => {
-  const { logout } = useAuth();
-  const handleLogout = async () => {
-    await logout();
+  const handleAddTask = () => {
+    console.log("Add Task");
   };
+
   return (
-    <View className="flex-1 justify-center items-center">
-      <Pressable onPress={handleLogout} title="Logout">
-        <Text>Logout</Text>
-      </Pressable>
+    <View className="flex-1 bg-white">
+      <HomeHeader />
+      <TasksList />
     </View>
   );
 };

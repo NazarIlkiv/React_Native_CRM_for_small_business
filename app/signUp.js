@@ -148,7 +148,7 @@ const SignUp = () => {
                   onPress={handleRegister}
                   style={{
                     height: hp(6.5),
-                    backgroundColor: "rgba(99, 102, 241, 1)",
+                    backgroundColor: "#24A19C",
                     borderRadius: 12,
                     justifyContent: "center",
                     alignItems: "center",
@@ -175,8 +175,8 @@ const SignUp = () => {
               </Text>
               <Pressable onPress={() => router.push("signIn")}>
                 <Text
-                  style={{ fontSize: hp(1.8) }}
-                  className="text-indigo-500 font-bold"
+                  style={{ fontSize: hp(1.8), color: "#24A19C" }}
+                  className="font-bold"
                 >
                   {" "}
                   {i18n.t("SingIn")}
